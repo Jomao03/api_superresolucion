@@ -1,0 +1,29 @@
+services:
+  # Servicio 1: Nuestra API
+  web:
+    build: .
+    container_name: api_fastapi
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://admin:admin123@db:5432/superresolucion_db
+
+  # Servicio 2: Base de datos PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: base_datos_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: superresolucion_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+# Aquí guardamos los datos para que no se borren si apagamos el contenedor
+volumes:
+  pgdata:

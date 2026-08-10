@@ -3,6 +3,8 @@ services:
   web:
     build: .
     container_name: api_fastapi
+    security_opt:
+      - "seccomp:unconfined"
     ports:
       - "8000:8000"
     depends_on:

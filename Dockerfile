@@ -1,20 +1,18 @@
-# 1. Usamos una imagen oficial de Python ligera como base
 FROM python:3.10-slim
 
-# 2. Le decimos a Docker en qué carpeta interna va a trabajar
 WORKDIR /app
 
-# 3. Copiamos el archivo de requerimientos al contenedor
-COPY requirements.txt .
+# 1. Instalamos solo la dependencia matemática paralela necesaria
+RUN apt-get update && \
+    apt-get install -y libgomp1 && \
+    rm -rf /var/lib/apt/lists/*
 
-# 4. Instalamos las librerías sin guardar caché para que la imagen sea más ligera
+# 2. Copiamos e instalamos dependencias de Python
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5. Copiamos todo el código de nuestra API (main.py) dentro del contenedor
+# 3. Copiamos el resto de tu código
 COPY . .
 
-# 6. Exponemos el puerto 8000 para poder acceder desde nuestro navegador
-EXPOSE 8000
-
-# 7. El comando exacto para iniciar el servidor cuando el contenedor arranque
+# 4. Comando de arranque
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,28 @@
+pytorch2.0.1:–
+™
+entrada
+conv.weight
+	conv.biassalida
+/conv/Conv"Conv*
+	dilations@@ *
+group *
+kernel_shape@@ *
+pads@@@@ *
+strides@@ 	torch_jit*ÞBconv.weightJÄ·]¼'ß½v¾‚ÅÐ¼jÕ?<#âŽ=¤œM<ÌÐ¾¾œ“=™˜2>ÌÕM=õ·(ºƒ,>Æ‚½'ï=(™=6|C>x=„U¾
+Ë.>:æ >>]Ø=†%½qÒ=edÍ<‹ÜÝ=…;¾û3¼<CO½\–’½s=Vœ <ñÂ9¾·ÈQ½J°¾Ñ=>ÃC¾ÔB¾5´	¾Áš>y³>mÔ>ü[Ž<ÌV"¾­±½i;)¾wÝŒ½ÚcÙ¼Ý;Ñ=(t>mZè½„/½°ò!¾Ò8,¾
+¡Ž½|ø9¾¤¹.¾-Â)¾Rþ½<œ˜½ f>¯®0¾[Ló½F¥É:Â
+î½¢‘½¾x“<6‘²=ÈË9¾œíé½õú3=‰Úï½-ò+¾›Óm<‹E ¾1Ü½(ók:C8™¼¾Ó ¾ ­½^å:¾*B	conv.biasJ/Ñu=€1>ˆ”‚<Z6
+entrada+
+)%
+
+batch_size
+
+height
+widthb5
+salida+
+)%
+
+batch_size
+
+height
+widthB

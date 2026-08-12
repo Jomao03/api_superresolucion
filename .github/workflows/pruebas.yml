@@ -10,6 +10,22 @@ jobs:
   pruebas:
     runs-on: ubuntu-latest
 
+    # 1. EL TRUCO DE DEVOPS: Encendemos una base de datos temporal
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin123
+          POSTGRES_DB: superresolucion_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: 1. Descargar el código del repositorio
         uses: actions/checkout@v3
@@ -25,4 +41,7 @@ jobs:
           pip install pytest httpx Pillow
 
       - name: 4. Ejecutar el escáner de calidad (Pytest)
+        # 2. Le decimos a la API que se conecte al PostgreSQL temporal (localhost)
+        env:
+          DATABASE_URL: postgresql://admin:admin123@localhost:5432/superresolucion_db
         run: pytest

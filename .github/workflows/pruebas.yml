@@ -1,0 +1,28 @@
+name: Pruebas Automáticas API
+
+on: 
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Descargar el código del repositorio
+        uses: actions/checkout@v3
+
+      - name: 2. Configurar el entorno de Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 3. Instalar las dependencias de tu proyecto
+        run: |
+          pip install -r requirements.txt
+          pip install pytest httpx Pillow
+
+      - name: 4. Ejecutar el escáner de calidad (Pytest)
+        run: pytest
